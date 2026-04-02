@@ -1,0 +1,61 @@
+<div class="chat-container">
+    <div id="chat-box" class="chat-box"></div>
+
+    <div class="chat-input-container">
+        <input type="text" id="user-input" placeholder="Type your question..." autocomplete="off">
+        <button id="send-btn">Send</button>
+    </div>
+</div>
+
+<script>
+    const chatBox = document.getElementById("chat-box");
+    const input = document.getElementById("user-input");
+    const sendBtn = document.getElementById("send-btn");
+
+    async function sendMessage() {
+        const message = input.value.trim();
+        if (!message) {
+            appendMessage("bot", "⚠️ Please type a message.");
+            return;
+        }
+
+        // Display user's message instantly
+        appendMessage("user", message);
+        input.value = "";
+
+        try {
+            // ✅ Fixed key name to match Flask route (user_message)
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_message: message })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+            }
+
+            const data = await response.json();
+            appendMessage("bot", data.reply || "⚠️ No reply received.");
+            if (data.emotion) {
+                document.getElementById("emotion").textContent = data.emotion;
+            }
+        } catch (error) {
+            console.error("Chat error:", error);
+            appendMessage("bot", "⚠️ Error: Unable to connect to the chatbot.");
+        }
+    }
+
+    function appendMessage(sender, text) {
+        const msg = document.createElement("div");
+        msg.classList.add("message", sender);
+        msg.innerHTML = `<p>${text}</p>`;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+    });
+</script>
