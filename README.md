@@ -70,7 +70,7 @@ Real-time-Emotion-aware-chatbot/
 │   └── emotion_thread.py
 │
 ├── models/
-│   └── emotion_model.h5   (download separately)
+│   └── emotion_model.h5   
 │
 ├── haarcascade/
 │   └── haarcascade_frontalface_default.xml
