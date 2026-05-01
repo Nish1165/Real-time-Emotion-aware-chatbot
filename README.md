@@ -61,23 +61,37 @@ Aligns with chatbot behavior (similar emotional responses required)
 
 Real-time-Emotion-aware-chatbot/
 │
+
 ├── app.py
+
 ├── requirements.txt
+
 ├── .env
+
 │
 ├── emotion_module/
+
 │   └── emotion_thread.py
+
 │
 ├── models/
+
 │   └── emotion_model.h5   (download separately)
+
 │
 ├── haarcascade/
+
 │   └── haarcascade_frontalface_default.xml
+
 │
 ├── templates/
+
 │   └── index.html
+
 │
+
 └── static/
+
      └── style.css
      
 
