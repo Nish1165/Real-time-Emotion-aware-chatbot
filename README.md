@@ -4,7 +4,7 @@
 
 The **Real-Time Emotion-Aware Conversational Chatbot** is an intelligent system that integrates **computer vision**, **deep learning**, and **natural language interaction** to detect human emotions in real time and respond accordingly.
 
-The system uses a webcam to capture facial expressions, processes them using a trained **CNN model**, and generates emotionally aware responses through a conversational AI module.
+The system uses a webcam to capture facial expressions, processes them using a trained **CNN model** [Downliad link : https://drive.google.com/file/d/1ZfdeLMf5SV06yvjLimA_pT_eWEEk7tXs/view?usp=drive_link], and generates emotionally aware responses through a conversational AI module.
 
 ---
 
@@ -15,7 +15,7 @@ The system uses a webcam to capture facial expressions, processes them using a t
 * 🤖 Emotion-aware chatbot responses
 * ⚡ Live video streaming with predictions
 * 🌐 Web-based interface using Flask
-* 📊 HSEmotion model deployed for real-time emotion recognition.
+* 📊 CNN model trained on FER2013 for real-time emotion recognition.
 
 ---
 
@@ -57,6 +57,39 @@ Aligns with chatbot behavior (similar emotional responses required)
 
 ---
 
+##  Required Directory Structure:-
+
+Real-time-Emotion-aware-chatbot/
+│
+├── app.py
+├── requirements.txt
+├── .env
+│
+├── emotion_module/
+│   └── emotion_thread.py
+│
+├── models/
+│   └── emotion_model.h5   (download separately)
+│
+├── haarcascade/
+│   └── haarcascade_frontalface_default.xml
+│
+├── templates/
+│   └── index.html
+│
+└── static/
+     └── style.css
+     
+
+##  Add API key for LLM:-
+
+Create a .env file in root:
+
+GEMINI_API_KEY=your_api_key_here
+
+.env file is required for chatbot functionality
+
+---
 ## ⚙️ Setup
 
 ### 1. Create virtual environment (optional but recommended)
@@ -85,5 +118,15 @@ http://127.0.0.1:5000/
 ```
 
 ---
+
+## Validation Score of the trained CNN Emotion Classifier:-
+
+Accuracy 75%
+
+Precision (Macro Avg) 0.75
+
+Recall (Macro Avg) 0.67
+
+F1 Score (Macro Avg) 0.70 
 
 
