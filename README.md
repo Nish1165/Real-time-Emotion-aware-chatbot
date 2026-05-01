@@ -4,7 +4,7 @@
 
 The **Real-Time Emotion-Aware Conversational Chatbot** is an intelligent system that integrates **computer vision**, **deep learning**, and **natural language interaction** to detect human emotions in real time and respond accordingly.
 
-The system uses a webcam to capture facial expressions, processes them using a trained **CNN model** [Downliad link : https://drive.google.com/file/d/1ZfdeLMf5SV06yvjLimA_pT_eWEEk7tXs/view?usp=drive_link], and generates emotionally aware responses through a conversational AI module.
+The system uses a webcam to capture facial expressions, processes them using a trained **CNN model** [Download link : https://drive.google.com/file/d/1ZfdeLMf5SV06yvjLimA_pT_eWEEk7tXs/view?usp=drive_link], and generates emotionally aware responses through a conversational AI module.
 
 ---
 
