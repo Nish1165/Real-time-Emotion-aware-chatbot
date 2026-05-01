@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Emotion-Aware Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Emotion-Aware Chatbot</h1>
+            <p class="subtitle">Learn interactively with emotional intelligence</p>
+        </header>
+
+        <div class="main">
+            <section class="camera-section">
+                <h2>🎥 Live Emotion Detection</h2>
+                <div class="camera-wrapper">
+                    <img id="webcam-feed" src="{{ url_for('video_feed') }}" alt="Webcam Feed">
+                    <p id="emotion-status">Detected Emotion: 
+                        <span id="emotion">Neutral</span>
+                    </p>
+                </div>
+            </section>
+
+            <section class="chat-section">
+                {% include 'chat.html' %}
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Periodically update the detected emotion every 5 seconds
+        async function updateEmotion() {
+            try {
+                const response = await fetch("/get_emotion");
+                const data = await response.json();
+                document.getElementById("emotion").textContent = data.emotion;
+            } catch (err) {
+                console.error("Emotion fetch error:", err);
+            }
+        }
+        setInterval(updateEmotion, 5000);
+    </script>
+</body>
+</html>
+
+
